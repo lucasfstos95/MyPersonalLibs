@@ -1,2 +1,2 @@
 # MyPersonalLibs
-All libraries I have been developed in
+All libraries I have been developed.
