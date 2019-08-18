@@ -2,14 +2,18 @@
 #define RS485Module_h
 
 #include <Arduino.h>
+#include <SoftwareSerial.h>
+
 
     class RS485Module
     {
         public:
-            RS485Module(int serial);
+            HardwareSerial *MySerial;
+            RS485Module(HardwareSerial &_serial);
             void read();
             void print(const char *msg);
             void begin(int baud);
+            
         
         private:
         

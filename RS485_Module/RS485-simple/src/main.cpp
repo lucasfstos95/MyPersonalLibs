@@ -2,7 +2,7 @@
 #include "RS485Module.h"
 
 //#define SERIAL_1
-RS485Module RS485(1);
+RS485Module RS485(Serial1);
 
 void setup() {
   RS485.begin(9600);
@@ -12,8 +12,10 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 }
-
+/*
 serialEvent(){
   RS485.read();
   RS485.print("oi");
+  
 }
+*/
