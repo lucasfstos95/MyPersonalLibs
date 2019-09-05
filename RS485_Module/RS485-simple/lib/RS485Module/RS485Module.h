@@ -8,8 +8,8 @@
     class RS485Module
     {
         public:
-            HardwareSerial *MySerial;
-            RS485Module(HardwareSerial &_serial);
+            HardwareSerial *_MySerial;
+            RS485Module(HardwareSerial &serial);
             void read();
             void print(const char *msg);
             void begin(int baud);
