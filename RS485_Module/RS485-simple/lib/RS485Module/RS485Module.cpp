@@ -8,15 +8,25 @@
 //========== DIRECTIVES ===============//
 //#define SIZE_OF_BUFFER 256
 
+
+//#define SOFTWARE_SERIAL_ENABLED
 //========== MACROS =============//
 
 char buffer[SERIAL_RX_BUFFER_SIZE];                //buffer master to receive and send the messages through serial
 
 //constructor
-RS485Module::RS485Module(HardwareSerial &serial){
+#ifndef SOFTWARE_SERIAL_ENABLED 
+    RS485Module::RS485Module(HardwareSerial &serial){
     _MySerial = &serial;  
     _MySerial->println("Started RS485 communication");
 }
+#else
+    RS485Module::RS485Module(SoftwareSerial &serial){
+    _MySerial = &serial;  
+    //_MySerial->println("Started RS485 communication");
+}
+#endif
+
 
 void RS485Module::read(){
     int i = 0;
@@ -30,7 +40,14 @@ void RS485Module::read(){
 
 void RS485Module::print(const char *msg){
     for(int i=0; i<SERIAL_TX_BUFFER_SIZE; i++){
-        _MySerial->write(buffer[i]);
+        _MySerial->write(msg[i]);
+    }
+}
+
+void RS485Module::println(const char *msg){
+    for(int i=0; i<SERIAL_TX_BUFFER_SIZE; i++){
+        _MySerial->write(msg[i]);
+        //delay(1);
     }
     _MySerial->write('\n');
 }
