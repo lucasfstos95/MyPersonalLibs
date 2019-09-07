@@ -1,16 +1,20 @@
 #include <Arduino.h>
+#include <SoftwareSerial.h>
 #include "RS485Module.h"
 
+SoftwareSerial minhaSerial(2,3);
+
 //#define SERIAL_1
-RS485Module RS485(Serial1);
+RS485Module rs485(Serial3);
 
 void setup() {
-  RS485.begin(9600);
-  RS485.print("Olá Mundo!");
+  rs485.begin(9600);
+  
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  rs485.println("Olá Mundo!");
+  delay(1000);
 }
 /*
 serialEvent(){
