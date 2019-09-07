@@ -3,9 +3,10 @@
 #include "RS485Module.h"
 
 SoftwareSerial minhaSerial(2,3);
+#define WRITE_PIN 10
 
 //#define SERIAL_1
-RS485Module rs485(Serial3);
+RS485Module rs485(Serial3, WRITE_PIN);
 
 void setup() {
   rs485.begin(9600);
